@@ -1,0 +1,118 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    
+    <ui:define name="corpo"> 
+    
+	           
+    <title>Meus pedidos</title>  
+	
+	
+     <p:tabView styleClass="cadCliente">
+        <p:tab title="Meus pedidos" >
+        <h:form>
+        <p:separator/>
+        
+        <h2 style="text-align:center">Meus pedidos</h2>
+        
+        <div class="formCadastro">
+        	    <p:button style="margin-left:04%" value="Novo pedido" outcome="CadastroPedido"></p:button>
+        	    <p:dataTable var="car" value="" styleClass="formLogin">
+				   
+				    <p:column headerText="Numero" width="100" style="text-align:center">
+				       001
+				    </p:column>
+				 
+				    <p:column headerText="Data" width="120" style="text-align:center">
+				        <h:outputText value="10/05/2017"/>
+				    </p:column>
+				 
+				    <p:column headerText="Categoria" width="200" style="text-align:center">
+				        <h:outputText value="Informática" />
+				    </p:column>
+				 
+				 
+					 <p:column headerText="Propostas" width="100" style="text-align:center">
+				        <h:outputText value="16" />
+				    </p:column>
+				 
+				    <p:column headerText="Operação" style="text-align:center" width="100">
+				        <p:commandButton icon="ui-icon ui-icon-close"></p:commandButton>
+				         <p:commandButton icon="ui-icon ui-icon-edith"></p:commandButton>
+				         <p:commandButton icon="ui-icon ui-icon-detail"></p:commandButton>
+				    </p:column>
+     			</p:dataTable>
+	             
+	      </div>
+	  
+	    </h:form>
+
+        </p:tab>
+    
+        <p:tab title="Meu cadastro">
+            <h:form>
+        <p:separator/>
+        <div class="formCadastro">
+             <h:panelGrid columns="4"  cellpadding="10" styleClass="formLogin">
+	                <p:outputLabel   value="Nome:" style="padding:10px"/>
+	                <p:inputText  class="form-control"  value="" size="55" placeholder="Ex: Steve Jobs" />
+	                
+	                <p:outputLabel value="Email:"  style="padding:10px"/>
+	                <p:inputText  class="form-control"  value="" size="55" placeholder="Ex: email@dominio.com.br"/>
+	                
+             		<p:outputLabel value="Senha" style="padding:10px" />
+	                <p:password styleClass="form-control" ></p:password>
+	                
+	                <p:outputLabel value="Telefone:" style="padding:10px"/>
+	                <p:inputMask  class="form-control"  mask="(99)9999-9999" placeholder="Ex: (21) 2616-0000 " size="55"/>
+	                
+	                <p:outputLabel value="Celular:" style="padding:10px" />
+	                <p:inputMask class="form-control" mask="(99)9.9999-9999" placeholder="Ex: (21) 9.8781-0000" size="55"/>
+	                
+	                <p:outputLabel value="Data Nasc.:"  style="padding:10px"/>
+	                <p:inputMask class="form-control" mask="99/99/9999" size="55" placeholder="Ex: 01/01/2000"/>
+	                
+	                <h:outputLabel value="Sigla"/>
+	                	<p:selectOneMenu filter="true" style="widt:10px" >
+	                		<f:selectItem itemValue="" itemLabel="Selecione o estado"/>
+	                		<f:selectItem itemValue="" itemLabel="DF"/>
+	                		<f:selectItem itemValue="" itemLabel="BA"/>
+	                		<f:selectItem itemValue="" itemLabel="GO"/>
+	                	</p:selectOneMenu>
+
+					<h:outputLabel value="Municipio"/>
+	                	<p:selectOneMenu filter="true" style="widt:10px" >
+	                		<f:selectItem itemValue="" itemLabel="Selecione o estado"/>
+	                		<f:selectItem itemValue="" itemLabel="Brasília"/>
+	                		<f:selectItem itemValue="" itemLabel="Aguas Lindas"/>
+	                		<f:selectItem itemValue="" itemLabel="Vila Boa"/>
+	                </p:selectOneMenu>
+ 				   
+ 				   <p:outputLabel value="Endereço:" style="padding:10px" />
+	                <p:inputText class="form-control" size="70"/>
+	                <p:outputLabel value="Nª" style="padding:10px"/>
+	                <p:inputText class="form-control" size="20"/>
+	                <p:outputLabel value="Complemento:" style="padding:10px"/>
+	                <p:inputText  class="form-control" size="27"/>
+		     
+	            </h:panelGrid>   
+	      </div>
+	      <p:separator/>
+		     <h:panelGrid columns="4" style="margin-left:8%;margin-bottom:40px">
+		     	 <p:commandButton value="Salvar"></p:commandButton>
+		     	 <p:button value="Login" outcome="Login"></p:button>	     	 
+	        </h:panelGrid>
+	     </h:form>
+        </p:tab>
+        
+    </p:tabView>
+    
+
+    </ui:define>
+
+</ui:composition>
+

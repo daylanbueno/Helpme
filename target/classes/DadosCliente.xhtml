@@ -1,0 +1,29 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+  <h:panelGrid columns="4" cellpadding="10" styleClass="formLogin">
+	                <p:outputLabel   value="Nome:"/>
+	                <p:inputText  class="form-control"  value="" size="55" placeholder="Ex: Steve Jobs" />
+	                <p:outputLabel value="Email:"/>
+	                <p:inputText  class="form-control"  value="" size="55" placeholder="Ex: email@dominio.com.br"/>
+	                <p:outputLabel value="Telefone:"/>
+	                <p:inputMask  class="form-control"  mask="(99)9999-9999" placeholder="Ex: (21) 2616-0000 " size="55"/>
+	                <p:outputLabel value="Celular:"/>
+	                <p:inputMask class="form-control" mask="(99)9.9999-9999" placeholder="Ex: (21) 9.8781-0000" size="55"/>
+	                <p:outputLabel value="Data Nasc.:"/>
+	                <p:inputMask class="form-control" mask="99/99/9999" size="55" placeholder="Ex: 01/01/2000"/>
+	                
+	</h:panelGrid>   
+	    		  <p:separator/>
+	            <h:panelGrid columns="6">
+	                <p:outputLabel value="Endereço:" />
+	                <p:inputText class="form-control" size="70"/>
+	                <p:outputLabel value="Nª"/>
+	                <p:inputText class="form-control" size="6"/>
+	                <p:outputLabel value="Complemento:"/>
+	                <p:inputText  class="form-control" size="27"/>
+                </h:panelGrid>
+</ui:composition>

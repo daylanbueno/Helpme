@@ -1,0 +1,94 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    
+    <ui:define name="corpo"> 
+    
+	           
+    <title>Cadastrar</title>  
+    
+	<br/>
+	<h2 style="text-align:center">É sempre um prazer ajudar você a fazer um ótimo négocio</h2>
+	<br/>
+     
+        <h:form>
+        <p:separator/>
+        <div class="formCadastro">
+             <h:panelGrid columns="7"  cellpadding="10" styleClass="formLogin">
+	               
+	                <h:outputLabel value="Estado"/>
+	                	<p:selectOneMenu filter="true" style="widt:10px" >
+	                		<f:selectItem itemValue="" itemLabel="Selecione o estado"/>
+	                		<f:selectItem itemValue="" itemLabel="DF"/>
+	                		<f:selectItem itemValue="" itemLabel="BA"/>
+	                		<f:selectItem itemValue="" itemLabel="GO"/>
+	                	</p:selectOneMenu>
+
+					<h:outputLabel value="Municipio"/>
+	                	<p:selectOneMenu filter="true" style="widt:10px" >
+	                		<f:selectItem itemValue="" itemLabel="Selecione o estado"/>
+	                		<f:selectItem itemValue="" itemLabel="Brasília"/>
+	                		<f:selectItem itemValue="" itemLabel="Aguas Lindas"/>
+	                		<f:selectItem itemValue="" itemLabel="Vila Boa"/>
+	                </p:selectOneMenu>
+ 				
+ 				
+					<h:outputLabel value="Categoria de produto que você procura"/>
+	                	<p:selectOneMenu filter="true" style="widt:10px" >
+	                		<f:selectItem itemValue="" itemLabel="Selecione a catégoria"/>
+	                		<f:selectItem itemValue="" itemLabel="Informática"/>
+	                		<f:selectItem itemValue="" itemLabel="Construção"/>
+	                		<f:selectItem itemValue="" itemLabel="Papelaria"/>
+	                </p:selectOneMenu>
+	                
+	                <p:button value="Voltar"   outcome="MeusPedidos" />
+	                
+	                
+	            </h:panelGrid>
+	            
+	            <p:separator/>
+	           
+	           <h:panelGrid columns="2" styleClass="formLogin">
+	           	    <p:outputLabel   value="Descrição do produto:" style="padding:5px"/>
+	                <p:inputText  class="form-control"  value="" size="70" placeholder="Ex: caneta azul faber castell" />
+	           	
+	      	     	<p:outputLabel   value="Quantida:" style="padding:10px"/>	
+	                <p:inputText  class="form-control"  value="" size="20" placeholder="Ex: 10" />
+	           
+	           		 <p:commandButton value="Adicionar"></p:commandButton>
+	           </h:panelGrid>  
+	           
+			    <p:dataTable var="car" value="" styleClass="formLogin">
+				   
+				    <p:column headerText="Quantidade" width="100">
+				       10
+				    </p:column>
+				 
+				    <p:column headerText="Descrição">
+				        <h:outputText value="Caderno caba dura." />
+				    </p:column>
+				 
+				    <p:column headerText="Operação" style="text-align:center">
+				        <p:commandButton icon="ui-icon ui-icon-close"></p:commandButton>
+				    </p:column>
+     			</p:dataTable>
+	             
+	      </div>
+	      <p:separator/>
+	
+	   	 <p:commandButton style="margin-left:07%"  value="Finalizar Pedido"></p:commandButton>	     	 
+       
+	  
+	  
+	    </h:form>
+
+    
+    
+    </ui:define>
+
+</ui:composition>
+
