@@ -48,5 +48,35 @@
 		</dependency>
 		
 		
+		<!-- Depedência hibernate Core -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.3.11.Final</version>
+		</dependency>
+		<!-- Mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.36</version>
+		</dependency>
+
+		<!-- jUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+		
+		
+		<!-- Ommifaces 1.11 -->
+		<dependency>
+			<groupId>org.omnifaces</groupId>
+			<artifactId>omnifaces</artifactId>
+			<version>1.11</version>
+		</dependency>
+		
+		
+		
 	</dependencies>
 </project>
