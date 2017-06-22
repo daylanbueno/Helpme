@@ -30,25 +30,21 @@
 		<property name="show_sql">true</property>
 
 		<!-- Cria as tabelas do banco de dados -->
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">create</property>
 				
 		<!-- mapeamento das entidades -->
 		
-<!-- 		<mapping class="br.com.casacandango.modelo.Cargo" /> -->
-<!-- 		<mapping class="br.com.casacandango.modelo.Cidade" /> -->
-<!-- 		<mapping class="br.com.casacandango.modelo.Consulta" /> -->
-<!-- 		<mapping class="br.com.casacandango.modelo.Contato" /> -->
-<!-- 		<mapping class="br.com.casacandango.modelo.Documento" /> -->
-<!-- 		<mapping class="br.com.casacandango.modelo.Endereco" /> -->
-<!-- 		<mapping class="br.com.casacandango.modelo.Estado" /> -->
-<!-- 		<mapping class="br.com.casacandango.modelo.Funcionario" /> -->
-<!-- 		<mapping class="br.com.casacandango.modelo.Idoso" /> -->
-<!-- 		<mapping class="br.com.casacandango.modelo.Responsavel" /> -->
-<!-- 		<mapping class="br.com.casacandango.modelo.Remedio" /> -->
-<!-- 		<mapping class="br.com.casacandango.modelo.Usuario" /> -->
-<!-- 		<mapping class="br.com.casacandango.modelo.Permissao" /> -->
-<!-- 		<mapping class="br.com.casacandango.modelo.Formacao" /> -->
-<!-- 		<mapping class="br.com.casacandango.modelo.Ocorrencia" /> -->
+		<mapping class="br.com.helpme.modelo.Categoria" />
+		<mapping class="br.com.helpme.modelo.Contato" />
+		<mapping class="br.com.helpme.modelo.Endereco" />
+		<mapping class="br.com.helpme.modelo.Estado" />
+		<mapping class="br.com.helpme.modelo.Municipio" />
+		<mapping class="br.com.helpme.modelo.Pedido" />
+		<mapping class="br.com.helpme.modelo.Pessoa" />
+		<mapping class="br.com.helpme.modelo.PessoaFisica" />
+		<mapping class="br.com.helpme.modelo.PessoaJuridica" />
+		<mapping class="br.com.helpme.modelo.Produto" />
+		<mapping class="br.com.helpme.modelo.Usuario" />
 		
 	</session-factory>
 
