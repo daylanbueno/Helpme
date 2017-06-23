@@ -1,10 +1,10 @@
+
+<hibernate-configuration>
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
-
-<hibernate-configuration>
 
 	<session-factory>
 
@@ -12,7 +12,7 @@
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/helpme</property>
 		<property name="connection.username">root</property>
-		<property name="connection.password">admin</property>
+		<property name="connection.password"></property>
 
 		<!-- Pool de Conexões -->
 		<property name="connection.pool_size">1</property>
@@ -31,7 +31,7 @@
 
 		<!-- Cria as tabelas do banco de dados -->
 		<property name="hbm2ddl.auto">create</property>
-				
+
 		<!-- mapeamento das entidades -->
 		
 		<mapping class="br.com.helpme.modelo.Categoria" />
@@ -45,6 +45,7 @@
 		<mapping class="br.com.helpme.modelo.PessoaJuridica" />
 		<mapping class="br.com.helpme.modelo.Produto" />
 		<mapping class="br.com.helpme.modelo.Usuario" />
+		
 		
 	</session-factory>
 

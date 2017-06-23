@@ -6,16 +6,19 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@Entity
 @Table(name = "TB_PEDIDO")
 public class Pedido implements Serializable {
 
@@ -23,7 +26,7 @@ public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue
 	private long id;
 	
 	@Temporal(TemporalType.DATE)
@@ -37,11 +40,17 @@ public class Pedido implements Serializable {
 	@OneToOne
 	@JoinColumn(nullable = false)
 	private PessoaFisica pessoaFisica;
-	
+
 	@OneToOne
 	@JoinColumn(nullable = false)
 	private Categoria categoria;
 
+	
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private Municipio municipio;
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -80,6 +89,16 @@ public class Pedido implements Serializable {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+	
+	
+
+	public Municipio getMunicipio() {
+		return municipio;
+	}
+
+	public void setMunicipio(Municipio municipio) {
+		this.municipio = municipio;
 	}
 
 	@Override
@@ -127,7 +146,5 @@ public class Pedido implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 	
 }
