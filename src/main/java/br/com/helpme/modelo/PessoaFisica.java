@@ -15,7 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table (name = "TB_DADOS_PESSOA_FISICA")
+@Table (name = "TB_PESSOA_FISICA")
 public class PessoaFisica  implements Serializable {
 
 	
@@ -35,10 +35,6 @@ public class PessoaFisica  implements Serializable {
 	@OneToOne
 	@JoinColumn
 	private Pessoa pessoa;
-	
-	@OneToOne
-	@JoinColumn
-	private Endereco endereco;
 
 	public long getId() {
 		return id;
@@ -72,20 +68,11 @@ public class PessoaFisica  implements Serializable {
 		this.pessoa = pessoa;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
-		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
@@ -106,11 +93,6 @@ public class PessoaFisica  implements Serializable {
 				return false;
 		} else if (!dataNascimento.equals(other.dataNascimento))
 			return false;
-		if (endereco == null) {
-			if (other.endereco != null)
-				return false;
-		} else if (!endereco.equals(other.endereco))
-			return false;
 		if (id != other.id)
 			return false;
 		if (nome == null) {
@@ -125,6 +107,7 @@ public class PessoaFisica  implements Serializable {
 			return false;
 		return true;
 	}
+	
 	
 	
 }

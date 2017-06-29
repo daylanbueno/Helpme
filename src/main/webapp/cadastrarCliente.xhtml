@@ -38,12 +38,15 @@
 	                <p:outputLabel value="Data Nasc.:"  style="padding:10px"/>
 	                <p:inputMask class="form-control" mask="99/99/9999" size="55" placeholder="Ex: 01/01/2000"/>
 	                
-	                <h:outputLabel value="Sigla"/>
+	                <h:outputLabel value="Estado:"/>
 	                	<p:selectOneMenu filter="true" style="widt:10px" >
 	                		<f:selectItem itemValue="" itemLabel="Selecione o estado"/>
-	                		<f:selectItem itemValue="" itemLabel="DF"/>
-	                		<f:selectItem itemValue="" itemLabel="BA"/>
-	                		<f:selectItem itemValue="" itemLabel="GO"/>
+	                		<f:selectItems 
+	                			value="#{clienteBean.listaEstados}" 
+	                			var="estado"
+	                			itemLabel="#{estado.sigla}"
+	                			itemValue="#{estado}">
+	                		</f:selectItems>
 	                	</p:selectOneMenu>
 
 					<h:outputLabel value="Municipio"/>

@@ -34,10 +34,6 @@ public class PessoaJuridica implements Serializable {
 	
 	@OneToOne
 	@JoinColumn(nullable = false)
-	private Endereco endereco;
-	
-	@OneToOne
-	@JoinColumn(nullable = false)
 	private Pessoa pessoa;
 
 	public long getId() {
@@ -56,21 +52,36 @@ public class PessoaJuridica implements Serializable {
 		return categoria;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
 	public Pessoa getPessoa() {
 		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setRazaoSocial(String razaoSocial) {
+		this.razaoSocial = razaoSocial;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result + ((categoria == null) ? 0 : categoria.hashCode());
 		result = prime * result + ((cnpj == null) ? 0 : cnpj.hashCode());
-		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
 		result = prime * result + ((razaoSocial == null) ? 0 : razaoSocial.hashCode());
@@ -81,7 +92,7 @@ public class PessoaJuridica implements Serializable {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -95,11 +106,6 @@ public class PessoaJuridica implements Serializable {
 			if (other.cnpj != null)
 				return false;
 		} else if (!cnpj.equals(other.cnpj))
-			return false;
-		if (endereco == null) {
-			if (other.endereco != null)
-				return false;
-		} else if (!endereco.equals(other.endereco))
 			return false;
 		if (id != other.id)
 			return false;
@@ -116,4 +122,6 @@ public class PessoaJuridica implements Serializable {
 		return true;
 	}
 
+	
+	
 }

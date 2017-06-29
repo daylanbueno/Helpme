@@ -48,12 +48,22 @@
 		</dependency>
 		
 		
-		<!-- Depedência hibernate Core -->
+		<!-- Depedência jpa -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.2.3.Final</version>
+			<scope>compile</scope>
+		</dependency>
+		
+			<!-- Depedência hibernate Core -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.3.11.Final</version>
+			<version>4.2.3.Final</version>
+			<scope>compile</scope>
 		</dependency>
+		
 		
 		<!-- Mysql -->
 		<dependency>
@@ -76,6 +86,14 @@
 			<artifactId>omnifaces</artifactId>
 			<version>1.11</version>
 		</dependency>
+		
+		<!-- 	CDI -->
+		<dependency>
+		  <groupId>org.jboss.weld.servlet</groupId>
+              <artifactId>weld-servlet</artifactId>
+              <version>1.1.10.Final</version>
+             <scope>compile</scope>
+        </dependency>
 		
 		
 		

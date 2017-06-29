@@ -30,6 +30,11 @@ public class Pessoa {
 	@OneToOne
 	@JoinColumn
 	private Contato contato;
+	
+	@OneToOne 
+	@JoinColumn(nullable = false)
+	private Endereco endereco;
+	
 
 	public long getId() {
 		return id;
@@ -63,11 +68,20 @@ public class Pessoa {
 		this.contato = contato;
 	}
 
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((contato == null) ? 0 : contato.hashCode());
+		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((tipoPessoa == null) ? 0 : tipoPessoa.hashCode());
 		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
@@ -88,6 +102,11 @@ public class Pessoa {
 				return false;
 		} else if (!contato.equals(other.contato))
 			return false;
+		if (endereco == null) {
+			if (other.endereco != null)
+				return false;
+		} else if (!endereco.equals(other.endereco))
+			return false;
 		if (id != other.id)
 			return false;
 		if (tipoPessoa != other.tipoPessoa)
@@ -99,5 +118,7 @@ public class Pessoa {
 			return false;
 		return true;
 	}
+	
+	
 
 }

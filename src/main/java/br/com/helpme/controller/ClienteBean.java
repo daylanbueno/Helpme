@@ -1,29 +1,39 @@
 package br.com.helpme.controller;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.view.ViewScoped;
+import java.util.List;
 
-import br.com.helpme.modelo.PessoaFisica;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
-@ManagedBean
-@ViewScoped
+import br.com.helpme.dao.EstadoDao;
+import br.com.helpme.modelo.Estado;
+
+@Named
+@RequestScoped
 public class ClienteBean {
+	
+	private List<Estado> listaEstados;
+	
+	@Inject
+	private EstadoDao estadoDao;
 
-	
-	private PessoaFisica pessoaFisica;
-	
-	
-	
-	public PessoaFisica getPessoaFisica() {
-		return pessoaFisica;
-	}
-
-	public void setPessoaFisica(PessoaFisica pessoaFisica) {
-		this.pessoaFisica = pessoaFisica;
+	@PostConstruct
+	public void carregarEstados(){
+		setListaEstados(estadoDao.carregarEstados());
+		System.out.println("carregou os estados");
 	}
 	
+	public List<Estado> getListaEstados() {
+		return listaEstados;
+	}
+
+	public void setListaEstados(List<Estado> listaEstados) {
+		this.listaEstados = listaEstados;
+	}
 	
 	
 	
-	
+
 }

@@ -33,7 +33,7 @@ public class Pedido implements Serializable {
 	@Column(nullable = false)
 	private Date dataPedido;
 	
-	@OneToMany(mappedBy ="produto",cascade =CascadeType.ALL, orphanRemoval = true)
+	@OneToMany
 	@JoinColumn
 	private List<Produto> produtos;
 	
