@@ -16,7 +16,8 @@
 	<br/>
      <p:tabView styleClass="cadCliente">
         <p:tab title="Sou cliente" >
-        <h:form>
+        
+        <h:form id="formCadCli">
         <p:separator/>
         <div class="formCadastro">
              <h:panelGrid columns="4"  cellpadding="10" styleClass="formLogin">
@@ -39,22 +40,30 @@
 	                <p:inputMask class="form-control" mask="99/99/9999" size="55" placeholder="Ex: 01/01/2000"/>
 	                
 	                <h:outputLabel value="Estado:"/>
-	                	<p:selectOneMenu filter="true" style="widt:10px" >
-	                		<f:selectItem itemValue="" itemLabel="Selecione o estado"/>
+	                	<p:selectOneMenu
+	                	    converter="omnifaces.SelectItemsConverter" 
+	                		filter="true" style="widt:10px"
+	                		value="#{clienteBean.estadoSelecionado}">
+	                		<f:selectItem noSelectionOption="true" itemLabel="Selecione o estado"/>
 	                		<f:selectItems 
 	                			value="#{clienteBean.listaEstados}" 
 	                			var="estado"
 	                			itemLabel="#{estado.sigla}"
 	                			itemValue="#{estado}">
 	                		</f:selectItems>
+	                		<p:ajax listener="#{clienteBean.carregarMunicipioPorEstado()}"
+	                		 update="formCadCli:munic" />
 	                	</p:selectOneMenu>
 
 					<h:outputLabel value="Municipio"/>
-	                	<p:selectOneMenu filter="true" style="widt:10px" >
-	                		<f:selectItem itemValue="" itemLabel="Selecione o estado"/>
-	                		<f:selectItem itemValue="" itemLabel="Brasília"/>
-	                		<f:selectItem itemValue="" itemLabel="Aguas Lindas"/>
-	                		<f:selectItem itemValue="" itemLabel="Vila Boa"/>
+	                	<p:selectOneMenu id="munic" filter="true" style="widt:10px" >
+	                		<f:selectItem itemValue="" itemLabel="Selecione o municipio"/>
+	                		<f:selectItems
+	                		 value="#{clienteBean.listaMunicipios}"
+	                		 var="municipio"
+	                		 itemLabel="#{municipio.nome}"
+	                		 itemValue="#{municipio}"			>
+	                		</f:selectItems>
 	                </p:selectOneMenu>
  				   
  				   <p:outputLabel value="Endereço:" style="padding:10px" />
