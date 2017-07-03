@@ -53,6 +53,8 @@ public class Pessoa {
 	}
 
 	public Usuario getUsuario() {
+		if(usuario== null )
+			usuario = new Usuario();
 		return usuario;
 	}
 
@@ -61,6 +63,8 @@ public class Pessoa {
 	}
 	
 	public Contato getContato() {
+		if(contato==null)
+			contato = new Contato();
 		return contato;
 	}
 
@@ -69,6 +73,8 @@ public class Pessoa {
 	}
 
 	public Endereco getEndereco() {
+		if(endereco == null)
+			endereco = new Endereco();
 		return endereco;
 	}
 

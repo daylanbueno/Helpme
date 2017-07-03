@@ -68,6 +68,8 @@ public class Endereco  implements Serializable{
 	}
 
 	public Municipio getMunicipio() {
+		if(municipio== null )
+			municipio = new Municipio();
 		return municipio;
 	}
 

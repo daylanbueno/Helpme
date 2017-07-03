@@ -61,6 +61,8 @@ public class PessoaFisica  implements Serializable {
 	}
 
 	public Pessoa getPessoa() {
+		if(pessoa==null)
+			pessoa = new Pessoa();
 		return pessoa;
 	}
 

@@ -41,13 +41,15 @@
 			<version>2.2.12</version>
 		</dependency>
 
+		<!-- Prime Faces -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>6.0</version>
+			<version>5.2</version>
 		</dependency>
-		
-		
+
+
+
 		<!-- Depedência jpa -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -55,16 +57,16 @@
 			<version>4.2.3.Final</version>
 			<scope>compile</scope>
 		</dependency>
-		
-			<!-- Depedência hibernate Core -->
+
+		<!-- Depedência hibernate Core -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>4.2.3.Final</version>
 			<scope>compile</scope>
 		</dependency>
-		
-		
+
+
 		<!-- Mysql -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -78,24 +80,24 @@
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 		</dependency>
-		
-		
+
+
 		<!-- Ommifaces 1.11 -->
 		<dependency>
 			<groupId>org.omnifaces</groupId>
 			<artifactId>omnifaces</artifactId>
 			<version>1.11</version>
 		</dependency>
-		
-		<!-- 	CDI -->
+
+		<!-- CDI -->
 		<dependency>
-		  <groupId>org.jboss.weld.servlet</groupId>
-              <artifactId>weld-servlet</artifactId>
-              <version>1.1.10.Final</version>
-             <scope>compile</scope>
-        </dependency>
-		
-		
-		
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet</artifactId>
+			<version>1.1.10.Final</version>
+			<scope>compile</scope>
+		</dependency>
+
+
+
 	</dependencies>
 </project>
