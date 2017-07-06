@@ -13,13 +13,11 @@
     
 	<br/>
 	<h2 style="text-align:center">Faça seu cadastro e gratuito!</h2>
-	<br/>
-     <p:tabView styleClass="cadCliente">
-        <p:tab title="Sou cliente" >
-        
+	
+     <p:panel styleClass="painelCadastro" header="Cadastro de consumidor" >
         <h:form id="formCadCli">
         
-       	 <p:messages id="msg" autoUpdate="true" closable="true" />
+       	 <p:growl id="msg" autoUpdate="true"  closable="true" />
         <p:separator/>
         <div class="formCadastro">
              <h:panelGrid columns="4"  cellpadding="10" styleClass="formLogin">
@@ -141,94 +139,11 @@
 	     	 <p:button value="Login" outcome="Login"></p:button>	     	 
         </h:panelGrid>
 	     </h:form>
-        </p:tab>
+
         
-<!-------------------------------------- CADASTRO DE PARCEIRO ------------------------------------------------------------->
-					
-        <p:tab title="Sou Parceiro">
-         <h:form>
-            <h:panelGrid styleClass="formCadastro" columns="4" cellpadding="1">
-	             	<p:outputLabel value="Razão social: "/>
-	             	<p:inputText  class="form-control" style="padding:10px" size="70"/>
-             	
-             	   <p:outputLabel value="CNPJ" style="padding:10px"/>
-	                <p:inputMask class="form-control" mask="99.999.999/9999-99" size="55" placeholder="Ex: 01/01/2000"/>
-                  
-	                <h:outputLabel value="Catégoria de produtos/Atuação" style="padding:10px"/>
-	                	<p:selectOneMenu filter="true">
-	                		<f:selectItem itemValue="" itemLabel="Informática"/>
-	                		<f:selectItem itemValue="" itemLabel="Construção"/>
-	                		<f:selectItem itemValue="" itemLabel="Papelaria"/>
-	                		<f:selectItem itemValue="" itemLabel="Gráfica"/>
-	                		<f:selectItem itemValue="" itemLabel="Celuras"/>
-	                	</p:selectOneMenu>
-          
-          
-             	
-             		<p:outputLabel value="Email:" style="padding:10px" />
-	                <p:inputText  class="form-control"  value="" size="55" placeholder="Ex: email@dominio.com.br"/>
-	                
-	                
-             		<p:outputLabel value="Senha" style="padding:10px" />
-	                <p:password styleClass="form-control" ></p:password>
-          
-        		   <p:outputLabel value="Telefone:" style="padding:10px"/>
-	                <p:inputMask  class="form-control"  mask="(99)9999-9999" placeholder="Ex: (21) 2616-0000 " size="55"/>
-	                
-	                <p:outputLabel value="Celular:" style="padding:10px"/>
-	                <p:inputMask class="form-control" mask="(99)9.9999-9999" placeholder="Ex: (21) 9.8781-0000" size="55"/>
-	                
-	             
-          	                
-	                <h:outputLabel value="Estado" style="padding:10px"/>
-	                	<p:selectOneMenu
-	                		value="#{parce}"
-	                	    converter="omnifaces.SelectItemsConverter" 
-	                		filter="true" style="widt:10px">
-	                		<f:selectItem noSelectionOption="true" 
-	                		            itemLabel="--SELECIONE--"/>
-	                		<f:selectItems 
-	                			value="#{parceitoBean.estados}" 
-	                			var="estado"
-	                			itemLabel="#{estado.sigla}"
-	                			itemValue="#{estado}">
-	                		</f:selectItems>
-	                		<p:ajax process="@this" listener="#{clienteBean.carregarMunicipioPorEstado()}"   
-									update="municipio">
-							</p:ajax>
-	                	</p:selectOneMenu>
-          
-          			<h:outputLabel value="Municipio" style="padding:10px"/>
-	                	<p:selectOneMenu filter="true">
-	                		<f:selectItem itemValue="" itemLabel="Selecione o municipio"/>
-	                		<f:selectItem itemValue="" itemLabel="Brasília"/>
-	                		<f:selectItem itemValue="" itemLabel="Aguas Lidas"/>
-	                		<f:selectItem itemValue="" itemLabel="Goiânia"/>
-	                	</p:selectOneMenu>
-          
-       
-	                <p:outputLabel value="Endereço:"  style="padding:10px"/>
-	                <p:inputText class="form-control" size="70"/>
-	                <p:outputLabel value="Nª" style="padding:10px"/>
-	                <p:inputText class="form-control" style="padding:10px" size="6"/>
-	                <p:outputLabel value="Complemento:" style="padding:10px"/>
-	                <p:inputText  class="form-control" size="27"/>
-       
-          
-            </h:panelGrid>
-         
-         <p:separator/>
-         
-	         <h:panelGrid columns="4" style="margin-left:8%;margin-bottom:40px">
-		     	 <p:commandButton value="Salvar"></p:commandButton>
-		     	 <p:button value="Login" outcome="Login"></p:button>	     	 
-	        </h:panelGrid>
-	            
-       </h:form>
-        </p:tab>
+		
         
-    </p:tabView>
-    
+</p:panel>
     
     </ui:define>
 
