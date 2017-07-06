@@ -142,7 +142,9 @@
         </h:panelGrid>
 	     </h:form>
         </p:tab>
-                
+        
+<!-------------------------------------- CADASTRO DE PARCEIRO ------------------------------------------------------------->
+					
         <p:tab title="Sou Parceiro">
          <h:form>
             <h:panelGrid styleClass="formCadastro" columns="4" cellpadding="1">
@@ -179,13 +181,22 @@
 	             
           	                
 	                <h:outputLabel value="Estado" style="padding:10px"/>
-	                	<p:selectOneMenu filter="true">
-	                		<f:selectItem itemValue="" itemLabel="Selecione uma mídia"/>
-	                		<f:selectItem itemValue="" itemLabel="Indicação de amigos"/>
-	                		<f:selectItem itemValue="" itemLabel="Internet"/>
-	                		<f:selectItem itemValue="" itemLabel="Televisão"/>
+	                	<p:selectOneMenu
+	                		value="#{parce}"
+	                	    converter="omnifaces.SelectItemsConverter" 
+	                		filter="true" style="widt:10px">
+	                		<f:selectItem noSelectionOption="true" 
+	                		            itemLabel="--SELECIONE--"/>
+	                		<f:selectItems 
+	                			value="#{parceitoBean.estados}" 
+	                			var="estado"
+	                			itemLabel="#{estado.sigla}"
+	                			itemValue="#{estado}">
+	                		</f:selectItems>
+	                		<p:ajax process="@this" listener="#{clienteBean.carregarMunicipioPorEstado()}"   
+									update="municipio">
+							</p:ajax>
 	                	</p:selectOneMenu>
-          
           
           			<h:outputLabel value="Municipio" style="padding:10px"/>
 	                	<p:selectOneMenu filter="true">
