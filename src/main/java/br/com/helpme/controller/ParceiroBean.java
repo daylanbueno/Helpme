@@ -7,16 +7,21 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EnumType;
 
+import org.hibernate.annotations.GenerationTime;
 import org.omnifaces.util.Messages;
 
 import br.com.helpme.dao.CategoriaDao;
 import br.com.helpme.dao.EstadoDao;
 import br.com.helpme.dao.MunicipioDao;
+import br.com.helpme.dao.ParceiroDao;
 import br.com.helpme.modelo.Categoria;
 import br.com.helpme.modelo.Estado;
 import br.com.helpme.modelo.Municipio;
 import br.com.helpme.modelo.PessoaJuridica;
+import br.com.helpme.modelo.TipoPessoa;
+import br.com.helpme.validador.ValidaCNPJ;
 
 @Named
 @ApplicationScoped
@@ -34,11 +39,17 @@ public class ParceiroBean {
 	private Estado estadoSelecionado;
 
 	private List<Estado> estados;
-
+	
+	@Inject
+	private ValidaCNPJ validarCnpj;
+	
 	private List<Categoria> listaCategoria;
 
 	@Inject
 	private PessoaJuridica pessoaJuridica;
+	
+	@Inject
+	private ParceiroDao parceirodao;
 
 	@PostConstruct
 	public void carregarEstados() {
@@ -96,71 +107,27 @@ public class ParceiroBean {
 
 	public void salvar() {
 		if (getPessoaJuridica() != null && isCnpjValido()) {
-				System.out.println("Passo para salvar");
+			try {
+				getPessoaJuridica().getPessoa().setTipoPessoa(TipoPessoa.JURICIA);
+				parceirodao.salvarParceido(getPessoaJuridica());
+				Messages.addGlobalInfo("Operação efetuada com sucesso");
+			} catch (Exception e) {
+				Messages.addGlobalError("Erro ao salvar");
+			}
 		}
 
 	}
 
 	public boolean isCnpjValido() {
-
-		String cnpj = null;
-		if (getPessoaJuridica() != null) {
-			cnpj = getPessoaJuridica().getCnpj();
+		boolean isValido = false;
+		if(getPessoaJuridica()!=null){
+		   isValido	= validarCnpj.isCnpjValido(getPessoaJuridica().getCnpj());
 		}
-
-		if (!cnpj.substring(0, 1).equals("")) {
-			try {
-				cnpj = cnpj.replace('.', ' ');// onde há ponto coloca espaço
-				cnpj = cnpj.replace('/', ' ');// onde há barra coloca espaço
-				cnpj = cnpj.replace('-', ' ');// onde há traço coloca espaço
-				cnpj = cnpj.replaceAll(" ", "");// retira espaço
-				int soma = 0, dig;
-				String cnpj_calc = cnpj.substring(0, 12);
-				if (cnpj.length() != 14) {
-					return false;
-				}
-				char[] chr_cnpj = cnpj.toCharArray();
-				/* Primeira parte */
-				for (int i = 0; i < 4; i++) {
-					if (chr_cnpj[i] - 48 >= 0 && chr_cnpj[i] - 48 <= 9) {
-						soma += (chr_cnpj[i] - 48) * (6 - (i + 1));
-					}
-				}
-				for (int i = 0; i < 8; i++) {
-					if (chr_cnpj[i + 4] - 48 >= 0 && chr_cnpj[i + 4] - 48 <= 9) {
-						soma += (chr_cnpj[i + 4] - 48) * (10 - (i + 1));
-					}
-				}
-				dig = 11 - (soma % 11);
-				cnpj_calc += (dig == 10 || dig == 11) ? "0" : Integer.toString(dig);
-				/* Segunda parte */
-				soma = 0;
-				for (int i = 0; i < 5; i++) {
-					if (chr_cnpj[i] - 48 >= 0 && chr_cnpj[i] - 48 <= 9) {
-						soma += (chr_cnpj[i] - 48) * (7 - (i + 1));
-					}
-				}
-				for (int i = 0; i < 8; i++) {
-					if (chr_cnpj[i + 5] - 48 >= 0 && chr_cnpj[i + 5] - 48 <= 9) {
-						soma += (chr_cnpj[i + 5] - 48) * (10 - (i + 1));
-					}
-				}
-				dig = 11 - (soma % 11);
-				cnpj_calc += (dig == 10 || dig == 11) ? "0" : Integer.toString(dig);
-				
-				boolean isValido = cnpj.equals(cnpj_calc);
-				if(!isValido){
-					Messages.addGlobalError("CNPJ Invalido!");
-				}
-				return isValido;
-			} catch (Exception e) {
-				Messages.addGlobalError("CNPJ Invalido!");
-				return false;
-			}
-		} else {
+		if(!isValido){
 			Messages.addGlobalError("CNPJ Invalido!");
-			return false;
 		}
+		return isValido;
 	}
 
+	
 }
