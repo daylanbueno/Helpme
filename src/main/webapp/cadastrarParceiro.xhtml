@@ -18,72 +18,146 @@
     <p:panel styleClass="painelCadastro" header="Cadastro de parceiros">
     			
          <h:form>
+           
+          <p:growl id="msg" autoUpdate="true"  closable="true" />
             <h:panelGrid styleClass="formCadastro" columns="4" cellpadding="1">
 	             	<p:outputLabel value="Razão social: "/>
-	             	<p:inputText  class="form-control" style="padding:10px" size="70"/>
+	             	<p:inputText  class="form-control"
+	             				  value="#{parceiroBean.pessoaJuridica.razaoSocial}"
+	             				  required="true"
+	             				  requiredMessage="O campo Razão social é obrigatório"
+	             				  style="padding:10px" size="70">
+	             
+	             	</p:inputText>
              	
              	   <p:outputLabel value="CNPJ" style="padding:10px"/>
-	                <p:inputMask class="form-control" mask="99.999.999/9999-99" size="55" placeholder="Ex: 01/01/2000"/>
+	                <p:inputMask class="form-control"
+	                			 id="cnpj"
+	                			 required="true"
+	             				 requiredMessage="O campo CNPJ é obrigatório"
+	                			 value="#{parceiroBean.pessoaJuridica.cnpj}"
+	                			 mask="99.999.999/9999-99"
+	                			 size="55" placeholder="Ex: 01/01/2000">
+	                	<p:ajax  update="cnpj" listener="#{parceiroBean.isCnpjValido()}"></p:ajax>
+	                </p:inputMask>
+                  
                   
 	                <h:outputLabel value="Catégoria de produtos/Atuação" style="padding:10px"/>
-	                	<p:selectOneMenu filter="true">
-	                		<f:selectItem itemValue="" itemLabel="Informática"/>
-	                		<f:selectItem itemValue="" itemLabel="Construção"/>
-	                		<f:selectItem itemValue="" itemLabel="Papelaria"/>
-	                		<f:selectItem itemValue="" itemLabel="Gráfica"/>
-	                		<f:selectItem itemValue="" itemLabel="Celuras"/>
-	                	</p:selectOneMenu>
+	                <p:selectOneMenu converter="omnifaces.SelectItemsConverter" 
+	                	 			 id="categoria"
+	                	 			 required="true"
+	             				     requiredMessage="O campo Catégoria de produtos/Atuação é obrigatório"
+	                	 			 value="#{parceiroBean.pessoaJuridica.categoria}"
+	                			     filter="true">
+	                	    <f:selectItem noSelectionOption="true" 
+	                		            itemLabel="--SELECIONE--">
+	                		 </f:selectItem>
+		                	 <f:selectItems
+			                	 var="cat"
+			                	 value="#{parceiroBean.listaCategoria}"
+			                	 itemValue="#{cat}"
+			                	 itemLabel="#{cat.nome}">
+		                	 </f:selectItems>
+	                	 	
+			                		
+	               </p:selectOneMenu>
           
           
              	
              		<p:outputLabel value="Email:" style="padding:10px" />
-	                <p:inputText  class="form-control"  value="" size="55" placeholder="Ex: email@dominio.com.br"/>
+	                <p:inputText   class="form-control" 
+	                	 		   required="true"
+	             				   requiredMessage="O campo Email é obrigatório" 
+	                			   value="#{parceiroBean.pessoaJuridica.pessoa.usuario.email}" 
+	                			   size="55" placeholder="Ex: email@dominio.com.br">
+	                </p:inputText>
 	                
 	                
              		<p:outputLabel value="Senha" style="padding:10px" />
-	                <p:password styleClass="form-control" ></p:password>
+	                <p:password styleClass="form-control"
+	                		    required="true"
+	             				requiredMessage="O campo Senha é obrigatório" 
+	                			value="#{parceiroBean.pessoaJuridica.pessoa.usuario.senha}" >
+	                </p:password>
+	                			
           
         		   <p:outputLabel value="Telefone:" style="padding:10px"/>
-	                <p:inputMask  class="form-control"  mask="(99)9999-9999" placeholder="Ex: (21) 2616-0000 " size="55"/>
+	                <p:inputMask  class="form-control"
+	                			  required="true"
+	             				  requiredMessage="O campo Telefone é obrigatório"  
+	                			  value="#{parceiroBean.pessoaJuridica.pessoa.contato.telefone}"	
+	                			  mask="(99)9999-9999" placeholder="Ex: (21) 2616-0000 "
+	                			  size="55">
+	                </p:inputMask>
 	                
 	                <p:outputLabel value="Celular:" style="padding:10px"/>
-	                <p:inputMask class="form-control" mask="(99)9.9999-9999" placeholder="Ex: (21) 9.8781-0000" size="55"/>
+	                <p:inputMask  class="form-control" 
+	                			  value="#{parceiroBean.pessoaJuridica.pessoa.contato.celular}"
+	                			  mask="(99)9.9999-9999" 
+	                			  placeholder="Ex: (21) 9.8781-0000" size="55">
+	                </p:inputMask>
 	                
-	             
-          	                
+	                        
 	                <h:outputLabel value="Estado" style="padding:10px"/>
 	                	<p:selectOneMenu
-	                		value="#{parce}"
+	                		value="#{parceiroBean.estadoSelecionado}"
 	                	    converter="omnifaces.SelectItemsConverter" 
 	                		filter="true" style="widt:10px">
 	                		<f:selectItem noSelectionOption="true" 
 	                		            itemLabel="--SELECIONE--"/>
 	                		<f:selectItems 
-	                			value="#{parceitoBean.estados}" 
+	                			value="#{parceiroBean.estados}" 
 	                			var="estado"
 	                			itemLabel="#{estado.sigla}"
 	                			itemValue="#{estado}">
 	                		</f:selectItems>
-	                		<p:ajax process="@this" listener="#{clienteBean.carregarMunicipioPorEstado()}"   
+	                		<p:ajax process="@this" listener="#{parceiroBean.carregarMunicipio()}"   
 									update="municipio">
 							</p:ajax>
 	                	</p:selectOneMenu>
           
-          			<h:outputLabel value="Municipio" id="municipio" style="padding:10px"/>
-	                	<p:selectOneMenu filter="true">
-	                		<f:selectItem itemValue="" itemLabel="Selecione o municipio"/>
-	                		<f:selectItem itemValue="" itemLabel="Brasília"/>
-	                		<f:selectItem itemValue="" itemLabel="Aguas Lidas"/>
-	                		<f:selectItem itemValue="" itemLabel="Goiânia"/>
+          			<h:outputLabel value="Municipio"  style="padding:10px"/>
+	                	<p:selectOneMenu
+	                		id="municipio"
+	                		value="#{parceiroBean.pessoaJuridica.pessoa.endereco.municipio}"
+	                		required="true"
+	             			requiredMessage="O campo Municipio é obrigatório" 
+	                	    converter="omnifaces.SelectItemsConverter" 
+	                		filter="true" style="widt:10px">
+	                		<f:selectItem noSelectionOption="true" 
+	                		            itemLabel="--SELECIONE--"/>
+	                		<f:selectItems 
+	                			value="#{parceiroBean.carregarMunicipio()}" 
+	                			var="municipio"
+	                			itemLabel="#{municipio.nome}"
+	                			itemValue="#{municipio}">
+	                		</f:selectItems>
 	                	</p:selectOneMenu>
           
        
 	                <p:outputLabel value="Endereço:"  style="padding:10px"/>
-	                <p:inputText class="form-control" size="70"/>
+	                <p:inputText class="form-control"
+	               				 required="true"
+	             				 requiredMessage="O campo Endereco é obrigatório" 
+	                			 value="#{parceiroBean.pessoaJuridica.pessoa.endereco.logradouro}"
+	                			 size="70">
+	                </p:inputText>
+	             						
 	                <p:outputLabel value="Nª" style="padding:10px"/>
-	                <p:inputText class="form-control" style="padding:10px" size="6"/>
+	                
+	                <p:inputText class="form-control"
+	                	         required="true"
+	             				 requiredMessage="O campo Nª é obrigatório" 
+	                			 value="#{parceiroBean.pessoaJuridica.pessoa.endereco.numero}"
+	                			 style="padding:10px"
+	                			 size="6">
+	                </p:inputText>
+	             
 	                <p:outputLabel value="Complemento:" style="padding:10px"/>
-	                <p:inputText  class="form-control" size="27"/>
+	                <p:inputText  class="form-control"
+	                			  value="#{parceiroBean.pessoaJuridica.pessoa.endereco.complemento}"
+	                			  size="27">
+	                </p:inputText>
        
           
             </h:panelGrid>
@@ -91,7 +165,10 @@
          <p:separator/>
          
 	         <h:panelGrid columns="4" style="margin-left:8%;margin-bottom:40px">
-		     	 <p:commandButton value="Salvar"></p:commandButton>
+		     	 <p:commandButton value="Salvar"
+		     	 			      ajax="true"  
+		     	 	              action="#{parceiroBean.salvar()}">
+		     	 </p:commandButton>
 		     	 <p:button value="Login" outcome="Login"></p:button>	     	 
 	        </h:panelGrid>
 	            

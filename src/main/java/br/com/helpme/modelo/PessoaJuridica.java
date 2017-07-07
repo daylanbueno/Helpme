@@ -53,6 +53,8 @@ public class PessoaJuridica implements Serializable {
 	}
 
 	public Pessoa getPessoa() {
+		if(pessoa==null)
+		 pessoa = new Pessoa();
 		return pessoa;
 	}
 
