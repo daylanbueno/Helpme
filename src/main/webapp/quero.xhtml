@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+   
+    
+    <ui:define name="corpo">              
+     
+     
+     <h:panelGrid columns="2" style="margin-top: 20%;margin-left: 30%; margin-height:30%" styleClass="painelCadastro">
+     	
+	     	<p:outputLabel>
+	     		<h3>Quero vender  produtos</h3>
+	     	</p:outputLabel>
+     	
+	     	<p:outputLabel>
+	     		<h3>Quero comprar produtos</h3>
+	     	</p:outputLabel>
+	     	
+	     	<p:button styleClass="btn btn-info btn-lg btn-block" 
+	     				   value="Solicitar orçamentos"
+	     				   outcome="cadastrarCliente.xhtml"
+	     				   	>
+	     	</p:button>
+
+	     	<p:button styleClass="btn btn-info btn-lg btn-block" 
+	     	 		  outcome="cadastrarParceiro.xhtml"
+	     	 		  value="Ser um parceiro">
+	     	</p:button>
+
+
+     </h:panelGrid>
+
+    </ui:define>
+
+</ui:composition>
