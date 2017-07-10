@@ -6,31 +6,45 @@
 
 
 	<ui:define name="corpo">
-			<h:panelGrid styleClass="formularioLogin" columns="1">
-				<h:form id="formLogin">
-					<h:outputText id="loginLabel" value="Email:" />
-					<h:inputText id="login" class="form-control"
-						value="">
-						<f:passThroughAttribute name="placeholder"
-							value="exemplo@gmail.com" />
-					</h:inputText>
-
-					<h:outputText id="senhaLabel" value="Senha:"></h:outputText>
-					<h:inputSecret id="senha" class="form-control"
-						value=""/>
-				
+	
+	
+			    <h:panelGrid style="margin-top: 02%;margin-left: 30%; margin-height:30%" columns="1">
+			     
+		   		   <a href="#">
+			       	<h:graphicImage name="images/logotipo.png" 
+			       					library="adamantium-layout"
+			       					style="height:300px;
+			       					margin-top:0px;" />
+			        </a>
+			     
+		   		 </h:panelGrid>
+		   		 
+		
+				<h:panelGrid styleClass="formularioLogin" columns="1">
+					<h:form id="formLogin">
+						<h:outputText id="loginLabel" value="Email:" />
+						<h:inputText id="login" class="form-control"
+							value="">
+							<f:passThroughAttribute name="placeholder"
+								value="exemplo@gmail.com" />
+						</h:inputText>
+	
+						<h:outputText id="senhaLabel" value="Senha:"></h:outputText>
+						<h:inputSecret id="senha" class="form-control"
+							value=""/>
 					
-					<h:panelGrid columns="2">
-					<h:button outcome="MeusPedidos" id="entrar" value="Entrar" class="btn btn-primary"
-						  />
-					<h:button  outcome="quero" id="cadastrar" value="Cadastrar-se " style="align-left"
-						 	class="btn btn-danger" />
-					</h:panelGrid>
-
-			
-
-				</h:form>
-			</h:panelGrid>
+						
+						<h:panelGrid columns="2">
+						<h:button outcome="MeusPedidos" id="entrar" value="Entrar" class="btn btn-primary"
+							  />
+						<h:button  outcome="quero" id="cadastrar" value="Cadastrar-se " style="align-left"
+							 	class="btn btn-danger" />
+						</h:panelGrid>
+	
+				
+	
+					</h:form>
+				</h:panelGrid>
 	</ui:define>
 
 </ui:composition>

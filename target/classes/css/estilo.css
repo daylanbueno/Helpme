@@ -3,13 +3,13 @@
 	margin-top: 50px;
 }
 .formularioLogin{
-	margin-left: 33%;
-	margin-top: 90px;
-	padding:10px;
-	margin-right:35%;
-	width: 400px;
-	height: 200px;
-	background: #B0E0E6;
+    margin-left: 33%;
+    margin-top: -35px;
+    padding: 10px;
+    margin-right: 35%;
+    width: 400px;
+    height: 200px;
+    background: #B0E0E6;
 	
 }
 .botoes{
@@ -20,6 +20,7 @@
 .formLogin{
 	padding: 10px;
 	margin: 50px;
+	margin-top: 0%
 }
 .formCadastro{
 	margin: 40px;
