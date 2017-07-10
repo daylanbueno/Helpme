@@ -3,7 +3,7 @@
 	margin-top: 50px;
 }
 .formularioLogin{
-    margin-left: 33%;
+    margin-left: 34%;
     margin-top: -35px;
     padding: 10px;
     margin-right: 35%;
@@ -31,6 +31,10 @@
 .btnFinalizar{
 	padding: 10px;
 	 margin: 50px;
+}
+.label{
+	font-size: large;
+	color: #4169E1;
 }
 .painelCadastro{
 	background-color: #F5FFFA;

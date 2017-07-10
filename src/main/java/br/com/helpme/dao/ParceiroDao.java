@@ -24,7 +24,7 @@ public class ParceiroDao {
 			manager.persist(parceito.getPessoa().getUsuario());
 		    manager.persist(parceito.getPessoa());
 			manager.merge(parceito);
-			
+			txt.commit();
 		} catch (Exception e) {
 			txt.rollback();
 			e.printStackTrace();
