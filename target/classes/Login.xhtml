@@ -24,21 +24,30 @@
 					<h:form id="formLogin">
 						<h:outputText id="loginLabel" value="Email:" styleClass="col-sm-2 control-label" />
 						<h:inputText id="login" class="form-control"
-							value="">
+							         value="#{usuarioBean.usuario.email}">
 							<f:passThroughAttribute name="placeholder"
 								value="exemplo@gmail.com" />
 						</h:inputText>
 	
 						<h:outputText id="senhaLabel" value="Senha:" styleClass="col-sm-2 control-label"></h:outputText>
 						<h:inputSecret id="senha" class="form-control"
-							value=""/>
+										value="#{usuarioBean.usuario.senha}"/>
 					
 						
 						<h:panelGrid columns="2">
-						<h:button outcome="MeusPedidos" id="entrar" value="Entrar" class="btn btn-primary"
-							  />
-						<h:button  outcome="quero" id="cadastrar" value="Cadastrar-se " style="align-left"
-							 	class="btn btn-danger" />
+						<h:commandButton id="entrar" 
+										 action="#{usuarioBean.findUsuaruioLogado()}"
+										 value="Entrar" 
+										 class="btn btn-primary"
+							  >
+						</h:commandButton>
+						
+						<h:button  outcome="quero" 
+								   id="cadastrar" 
+								   value="Cadastrar-se " 
+								   style="align-left"
+							 	   class="btn btn-danger" >
+						</h:button>
 						</h:panelGrid>
 	
 				
