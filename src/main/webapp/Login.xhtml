@@ -18,20 +18,27 @@
 			        </a>
 			     
 		   		 </h:panelGrid>
-		   		 
+		   		 <p:growl id="msg" autoUpdate="true"  closable="true" />
 		
 				<h:panelGrid styleClass="formularioLogin" columns="1">
 					<h:form id="formLogin">
 						<h:outputText id="loginLabel" value="Email:" styleClass="col-sm-2 control-label" />
 						<h:inputText id="login" class="form-control"
+							         required="true"
+							         requiredMessage="Favor entre com seu E-mail"
 							         value="#{usuarioBean.usuario.email}">
 							<f:passThroughAttribute name="placeholder"
 								value="exemplo@gmail.com" />
 						</h:inputText>
 	
 						<h:outputText id="senhaLabel" value="Senha:" styleClass="col-sm-2 control-label"></h:outputText>
-						<h:inputSecret id="senha" class="form-control"
-										value="#{usuarioBean.usuario.senha}"/>
+						<h:inputSecret id="senha"
+						               class="form-control"
+									   value="#{usuarioBean.usuario.senha}"
+									   required="true"
+							           requiredMessage="Favor entre com sua senha">
+										
+						</h:inputSecret>
 					
 						
 						<h:panelGrid columns="2">
