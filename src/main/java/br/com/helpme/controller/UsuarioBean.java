@@ -55,5 +55,14 @@ public class UsuarioBean{
 		
 	}
 	
+	public boolean isExisteUsuárioLogado(){
+		if(getUsuarioLogado()==null){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	
 	
 }
