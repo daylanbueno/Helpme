@@ -4,14 +4,13 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml"
                 xmlns:f="http://java.sun.com/jsf/core">
-
     
     <ui:define name="corpo" > 
     
 	           
     <title>Cadastrar</title>  
      
-        <h:form   >
+        <h:form>
     
 		    
 			<br/>
@@ -25,10 +24,15 @@
 	               
 	                <h:outputLabel value="Estado"/>
 	                	<p:selectOneMenu filter="true" style="widt:10px" >
-	                		<f:selectItem itemValue="" itemLabel="Selecione o estado"/>
-	                		<f:selectItem itemValue="" itemLabel="DF"/>
-	                		<f:selectItem itemValue="" itemLabel="BA"/>
-	                		<f:selectItem itemValue="" itemLabel="GO"/>
+	                	 <f:selectItems value="#{cadastroPedidoBean.carregarEstados()}"
+	                	 				itemValue="#{estado}"
+	                	 	            var="estado"
+	                	 	            itemLabel="#{estado.sigla}"
+	                	 	            >
+	                	 </f:selectItems>
+						<f:selectItem noSelectionOption="true"
+									  itemLabel="--SELECIONE--">
+						</f:selectItem>
 	                	</p:selectOneMenu>
 
 					<h:outputLabel value="Municipio"/>
