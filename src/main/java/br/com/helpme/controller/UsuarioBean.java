@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.omnifaces.util.Messages;
-import org.omnifaces.util.Messages.Message;
 
 import br.com.helpme.dao.UsuarioDao;
 import br.com.helpme.modelo.Usuario;
